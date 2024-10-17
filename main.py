@@ -50,3 +50,26 @@ print(city1.get_info())
 city1.update_population(2900000)
 print(city1.get_info())
 
+#task3
+class Country:
+    def __init__(self, name, continent, population, phone_code, capital, cities):
+        self.name = name
+        self.continent = continent
+        self.population = population
+        self.phone_code = phone_code
+        self.capital = capital
+        self.cities = cities  # Список міст
+
+    def get_info(self):
+        return (f"\nНазва країни: {self.name}, \nКонтинент: {self.continent}, "
+                f"\nКількість жителів: {self.population}, \nТелефонний код: {self.phone_code}, "
+                f"\nСтолиця: {self.capital}, \nМіста: {', '.join(self.cities)}")
+
+    def update_population(self, new_population):
+        self.population = new_population
+        print(f"\nКількість жителів оновлена: {self.population}")
+
+country1 = Country("Україна", "Європа", 40000000, "+380", "Київ", ["Львів", "Харків", "Одеса"])
+print(country1.get_info())
+country1.update_population(42000000)
+print(country1.get_info())
