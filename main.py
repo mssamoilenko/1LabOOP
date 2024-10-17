@@ -73,3 +73,60 @@ country1 = Country("Україна", "Європа", 40000000, "+380", "Київ
 print(country1.get_info())
 country1.update_population(42000000)
 print(country1.get_info())
+
+#task4
+import math
+
+class Fraction:
+    def __init__(self, numerator, denominator):
+        if denominator == 0:
+            raise ValueError("Знаменник не може бути нулем!")
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def get_info(self):
+        return f"{self.numerator}/{self.denominator}"
+
+    def add(self, other):
+        num = self.numerator * other.denominator + other.numerator * self.denominator
+        den = self.denominator * other.denominator
+        return Fraction(num, den).simplify()
+
+    def subtract(self, other):
+        num = self.numerator * other.denominator - other.numerator * self.denominator
+        den = self.denominator * other.denominator
+        return Fraction(num, den).simplify()
+
+    def multiply(self, other):
+        num = self.numerator * other.numerator
+        den = self.denominator * other.denominator
+        return Fraction(num, den).simplify()
+
+    def divide(self, other):
+        if other.numerator == 0:
+            raise ValueError("Не можна ділити на нуль!")
+        num = self.numerator * other.denominator
+        den = self.denominator * other.numerator
+        return Fraction(num, den).simplify()
+
+    def simplify(self):
+        gcd = math.gcd(self.numerator, self.denominator)
+        return Fraction(self.numerator // gcd, self.denominator // gcd)
+
+frac1 = Fraction(3, 4)
+frac2 = Fraction(5, 6)
+
+print("\nДріб 1:", frac1.get_info())
+print("Дріб 2:", frac2.get_info())
+
+sum_result = frac1.add(frac2)
+print("Сума:", sum_result.get_info())
+
+diff_result = frac1.subtract(frac2)
+print("Різниця:", diff_result.get_info())
+
+mul_result = frac1.multiply(frac2)
+print("Добуток:", mul_result.get_info())
+
+div_result = frac1.divide(frac2)
+print("Частка:", div_result.get_info())
